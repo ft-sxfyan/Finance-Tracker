@@ -1,0 +1,3 @@
+import { formatCurrency, formatDate } from '../utils/formatters';
+function IncomeTable({ income = [], onDeleteIncome }) { return income.length ? <div className="table-wrap"><table><thead><tr><th>Date</th><th>Source</th><th>Amount</th><th>Action</th></tr></thead><tbody>{income.map((entry) => <tr key={entry._id || entry.id}><td>{formatDate(entry.date)}</td><td>{entry.source}</td><td>{formatCurrency(entry.amount)}</td><td><button className="button-danger" onClick={() => onDeleteIncome(entry._id || entry.id)}>Delete</button></td></tr>)}</tbody></table></div> : <p className="empty-state">No income recorded for this period.</p>; }
+export default IncomeTable;
